@@ -1,12 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export const MovieDetail = ({ route }: any) => {
-  const { id } = route.params;
-
+export const Movies = () => {
   return (
     <View>
-      <Text>{id}</Text>
+      <Text>Movies</Text>
     </View>
   );
 };
