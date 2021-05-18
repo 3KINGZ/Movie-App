@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { scale } from "react-native-size-matters";
@@ -11,17 +11,20 @@ const genresArr = Object.entries(genres);
 interface IFilterCard {
   filter: [string, string];
   active: boolean;
-  action(filterId: string): () => void;
+  action(filterId: { genreId: string; genre: string }): any;
 }
 
 interface IFilter {
-  action(filterId: string): () => any;
+  action: () => any;
   filterString: string;
 }
 
 const FilterCard = ({ filter, active, action }: IFilterCard) => {
   return (
-    <TouchableOpacity onPress={() => action(filter[1])}>
+    <TouchableOpacity
+      onPress={() =>
+        action({ genreId: filter[0].replace("_", ""), genre: filter[1] })
+      }>
       <View
         style={
           active ? styles.filterCardContainerActive : styles.filterCardContainer

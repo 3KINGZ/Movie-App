@@ -1,10 +1,10 @@
 import * as types from "./types";
-import { getMovieGenre } from "../services";
+import { getMoviesByCategory } from "../services";
 
 export const _getMovieGenre = (genre: string) => async (dispatch: any) => {
   dispatch({ type: types.GET_MOVIES.REQUEST });
 
-  const response: any = await getMovieGenre(genre);
+  const response: any = await getMoviesByCategory(genre);
 
   if (response.data) {
     dispatch({

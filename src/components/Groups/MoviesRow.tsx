@@ -5,6 +5,7 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
@@ -15,27 +16,42 @@ import { MovieRow } from "../Cards";
 interface IMoviesRow {
   headerTitle: string;
   data: any;
+  loading: boolean;
 }
 
-export const MoviesRow = ({ headerTitle, data }: IMoviesRow) => {
+export const MoviesRow = ({ headerTitle, data, loading }: IMoviesRow) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerTitle}>{headerTitle}</Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate(routes.MOVIE_LIST)}>
-          <Text style={styles.headerLink}>See all</Text>
-        </TouchableOpacity>
-      </View>
+      {loading && !data?.length ? (
+        <View
+          style={{
+            height: 170,
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+          <ActivityIndicator color={COLORS.secondary} />
+        </View>
+      ) : (
+        <View>
+          <View style={styles.headerContainer}>
+            <Text style={styles.headerTitle}>{headerTitle}</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate(routes.MOVIE_LIST)}>
+              <Text style={styles.headerLink}>See all</Text>
+            </TouchableOpacity>
+          </View>
 
-      <FlatList
-        horizontal
-        data={data}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => <MovieRow movie={item} />}
-      />
+          <FlatList
+            horizontal
+            data={data}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <MovieRow movie={item} />}
+          />
+        </View>
+      )}
     </View>
   );
 };

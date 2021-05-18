@@ -19,25 +19,3 @@ export const genres: { [key: string]: any } = {
   _10752: "War",
   _37: "Western",
 };
-
-const genreArr = [
-  { id: "_28", genre: "Action" },
-  { id: "_12", genre: "Adventure" },
-  { id: "_16", genre: "Animation" },
-  { id: "_35", genre: "Comedy" },
-  { id: "_80", genre: "Crime" },
-  { id: "_99", genre: "Documentary" },
-  // _18: "Drama",
-  // _10751: "Family",
-  // _14: "Fantasy",
-  // _36: "History",
-  // _27: "Horror",
-  // _10402: "Music",
-  // _9648: "Mystery",
-  // _878: "Romance",
-  // _10749: "Science Fiction",
-  // _10770: "TV Movie",
-  // _53: "Thriller",
-  // _10752: "War",
-  // _37: "Western",
-];

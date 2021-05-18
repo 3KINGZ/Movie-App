@@ -10,9 +10,18 @@ import { COLORS, FONTS } from "../styles";
 export const Home = () => {
   const dispatch = useDispatch();
 
-  const { genres } = useSelector((state: State) => state.movies);
+  const {
+    movies: { genres },
+    loading,
+  } = useSelector((state: State) => state);
 
-  const [filterString, setFilterString] = useState("Action");
+  const [filterString, setFilterString] = useState<{
+    genreId: string;
+    genre: string;
+  }>({
+    genreId: "28",
+    genre: "Action",
+  });
 
   useEffect(() => {
     dispatch(_getMovieGenre("now_playing"));
@@ -21,10 +30,17 @@ export const Home = () => {
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
-        <MoviesRow headerTitle="Now Playing" data={genres?.["now_playing"]} />
+        <MoviesRow
+          headerTitle="Now Playing"
+          data={genres?.["now_playing"]}
+          loading={loading}
+        />
         <View style={styles.genresContainer}>
           <Text style={styles.genreTitle}>Genres</Text>
-          <Filter action={setFilterString} filterString={filterString} />
+          <Filter
+            action={(value: any) => setFilterString}
+            filterString={filterString.genre}
+          />
         </View>
       </View>
     </View>
