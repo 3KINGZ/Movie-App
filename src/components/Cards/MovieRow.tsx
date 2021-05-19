@@ -57,5 +57,6 @@ const styles = StyleSheet.create({
   genre: {
     ...FONTS.tiny,
     marginTop: 2,
+    opacity: 0.7,
   },
 });

@@ -32,7 +32,7 @@ export const MoviesRow = ({ headerTitle, data, loading }: IMoviesRow) => {
             alignItems: "center",
             justifyContent: "center",
           }}>
-          <ActivityIndicator color={COLORS.secondary} />
+          <ActivityIndicator size="large" color={COLORS.secondary} />
         </View>
       ) : (
         <View>

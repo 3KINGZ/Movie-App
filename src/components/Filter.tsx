@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   filterCardContainer: {
     padding: 10,
     borderRadius: 20,
-    backgroundColor: "#091a1f",
+    backgroundColor: COLORS.darkBlue,
     margin: 5,
   },
   filterCardContainerActive: {

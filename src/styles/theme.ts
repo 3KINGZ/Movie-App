@@ -4,6 +4,7 @@ export const COLORS = {
   primary: "#1f2340",
   secondary: "#127ada",
   textColor: "#f6f7fb",
+  darkBlue: "#13142b",
 };
 
 export const FONTS = {

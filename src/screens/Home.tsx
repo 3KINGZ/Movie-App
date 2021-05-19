@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
-import { _getMovieGenre } from "../actions/movie";
-import { MoviesRow, Filter } from "../components";
+import { _getMovieCategory, _getMovieGenre } from "../actions/movie";
+import { MoviesRow, Filter, Movies } from "../components";
 import { COLORS, FONTS } from "../styles";
 
 export const Home = () => {
@@ -23,9 +23,15 @@ export const Home = () => {
     genre: "Action",
   });
 
+  console.log(genres[filterString.genreId]);
+
   useEffect(() => {
-    dispatch(_getMovieGenre("now_playing"));
+    dispatch(_getMovieCategory("now_playing"));
   }, []);
+
+  useEffect(() => {
+    dispatch(_getMovieGenre(filterString.genre, filterString.genreId));
+  }, [filterString]);
 
   return (
     <View style={styles.container}>
@@ -37,10 +43,8 @@ export const Home = () => {
         />
         <View style={styles.genresContainer}>
           <Text style={styles.genreTitle}>Genres</Text>
-          <Filter
-            action={(value: any) => setFilterString}
-            filterString={filterString.genre}
-          />
+          <Filter action={setFilterString} filterString={filterString.genre} />
+          <Movies data={genres[filterString.genre]} loading={loading} />
         </View>
       </View>
     </View>
