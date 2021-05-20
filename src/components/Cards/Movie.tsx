@@ -4,6 +4,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import StarRating from "react-native-star-rating";
 import routes from "../../navigation/routes";
+import Icon from "react-native-vector-icons/AntDesign";
 
 import { posterURL } from "../../constants";
 import { COLORS, FONTS } from "../../styles";
@@ -21,7 +22,10 @@ export const Movie = ({ movie, genre }: { movie: IMovie; genre: string }) => {
       <View style={styles.container}>
         <Image source={{ uri: posterURL + poster_path }} style={styles.image} />
         <View style={styles.infoContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Icon name="heart" size={24} color="white" style={styles.likeIcon} />
+          <Text style={styles.title} numberOfLines={2}>
+            {title}
+          </Text>
           <View style={styles.ratingContainer}>
             <StarRating
               starSize={18}
@@ -33,7 +37,9 @@ export const Movie = ({ movie, genre }: { movie: IMovie; genre: string }) => {
             />
             <Text style={styles.rating}>{vote_average}</Text>
           </View>
-          <Text style={styles.genres}>{mapGenres(genre_ids)}</Text>
+          <Text style={styles.genres} numberOfLines={2}>
+            {mapGenres(genre_ids)}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -50,17 +56,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     overflow: "hidden",
   },
-  infoContainer: {
-    paddingHorizontal: 10,
-  },
   image: {
     width: scale(130),
     height: scale(150),
   },
+  infoContainer: {
+    width: "60%",
+    paddingHorizontal: 10,
+  },
+  likeIcon: { alignSelf: "flex-end", opacity: 0.5 },
   title: {
     ...FONTS.regular,
     fontWeight: "bold",
-    width: "80%",
+    maxWidth: "70%",
     marginVertical: 5,
   },
   ratingContainer: {
@@ -78,5 +86,6 @@ const styles = StyleSheet.create({
     ...FONTS.mini,
     opacity: 0.7,
     marginVertical: 5,
+    maxWidth: "70%",
   },
 });

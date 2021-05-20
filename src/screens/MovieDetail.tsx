@@ -3,9 +3,10 @@ import React, { useEffect } from "react";
 import {
   View,
   Text,
-  StyleSheet,
   ActivityIndicator,
+  TouchableOpacity,
   ScrollView,
+  StyleSheet,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import YoutubePlayer from "react-native-youtube-iframe";
@@ -17,13 +18,12 @@ import { COLORS, FONTS } from "../styles";
 import { parseRating, mapGenresDetail } from "../utils";
 import { scale } from "react-native-size-matters";
 import { Casts, Reviews } from "../components";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
-//antd -arrowleft -heart
 
 const Divider = () => <View style={styles.divider} />;
 
 export const MovieDetail = ({ route, navigation }: any) => {
+  const { id } = route.params;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,8 +38,6 @@ export const MovieDetail = ({ route, navigation }: any) => {
     reviews,
   } = useSelector((state: State) => state.movieDetail);
 
-  const { id } = route.params;
-
   const {
     title,
     videos = {
@@ -50,8 +48,6 @@ export const MovieDetail = ({ route, navigation }: any) => {
     vote_average,
     runtime,
   } = movieDetail;
-
-  console.log("reviews\n", reviews?.length);
 
   return loading ? (
     <View
@@ -159,7 +155,6 @@ const styles = StyleSheet.create({
   genreContainer: {
     flexDirection: "row",
     alignItems: "center",
-    // justifyContent: "center",
     marginVertical: 5,
   },
   rating: {
@@ -167,12 +162,14 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   genre: {
-    ...FONTS.tiny,
-    opacity: 0.5,
+    ...FONTS.regular,
+    fontSize: scale(12),
+    opacity: 0.6,
   },
   runtime: {
-    ...FONTS.tiny,
-    opacity: 0.5,
+    ...FONTS.regular,
+    fontSize: scale(12),
+    opacity: 0.6,
   },
   overview: {
     ...FONTS.regular,
