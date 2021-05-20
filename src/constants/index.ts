@@ -1,3 +1,4 @@
 export * from "./genres";
 
-export const posterUrl = "https://image.tmdb.org/t/p/w185/";
+export const posterURL = "https://image.tmdb.org/t/p/w500/";
+export const backDropURL = "https://image.tmdb.org/t/p/w500/";

@@ -43,8 +43,34 @@ export const getMoviesByGenre = async (genre: string) => {
   }
 };
 
-export const getMovieDetails = async (id: string) => {
-  let response = await axios.get(`${baseURL}${id}?api_key=${apiKey}`);
-  response = await response.data;
-  return response;
+export const getMovieDetail = async (id: string) => {
+  try {
+    let response = await axios.get(
+      `${baseURL}${id}?api_key=${apiKey}&append_to_response=videos`,
+    );
+    response = await response.data;
+    return { data: response, error: null };
+  } catch (error) {
+    return { data: null, error: error };
+  }
+};
+
+export const getMovieCast = async (id: string) => {
+  try {
+    let response = await axios.get(`${baseURL}${id}/credits?api_key=${apiKey}`);
+    response = await response.data;
+    return { data: response, error: null };
+  } catch (error) {
+    return { data: null, error: error };
+  }
+};
+
+export const getReviews = async (id: string) => {
+  try {
+    let response = await axios.get(`${baseURL}${id}/reviews?api_key=${apiKey}`);
+    response = await response.data;
+    return { data: response, error: null };
+  } catch (error) {
+    return { data: null, error: error };
+  }
 };

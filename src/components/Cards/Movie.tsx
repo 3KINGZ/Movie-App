@@ -3,23 +3,23 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import StarRating from "react-native-star-rating";
-
-import { posterUrl } from "../../constants";
-import { mapGenres, parseRating } from "../../utils";
 import routes from "../../navigation/routes";
-import { scale } from "react-native-size-matters";
-import { COLORS, FONTS } from "../../styles";
 
-export const Movie = ({ movie }: { movie: IMovie }) => {
+import { posterURL } from "../../constants";
+import { COLORS, FONTS } from "../../styles";
+import { scale } from "react-native-size-matters";
+import { mapGenres, parseRating } from "../../utils";
+
+export const Movie = ({ movie, genre }: { movie: IMovie; genre: string }) => {
   const navigation = useNavigation();
 
   const { id, title, poster_path, genre_ids, vote_average } = movie;
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(routes.MOVIE_DETAIL, { id })}>
+      onPress={() => navigation.navigate(routes.MOVIE_DETAIL, { id, genre })}>
       <View style={styles.container}>
-        <Image source={{ uri: posterUrl + poster_path }} style={styles.image} />
+        <Image source={{ uri: posterURL + poster_path }} style={styles.image} />
         <View style={styles.infoContainer}>
           <Text style={styles.title}>{title}</Text>
           <View style={styles.ratingContainer}>

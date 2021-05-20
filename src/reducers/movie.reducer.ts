@@ -22,7 +22,7 @@ const movieReducer = (
     }
 
     case types.GET_MOVIES.FAILURE:
-      return { ...state, message: "Unable to fetch movies" };
+      return { ...state, message: "Unable to fetch movies", loading: false };
 
     default:
       return state;

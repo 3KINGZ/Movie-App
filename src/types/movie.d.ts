@@ -5,4 +5,8 @@ interface IMovie {
   poster_path?: string;
   genre_ids?: [string];
   vote_average?: string;
+  loading: boolean;
+  movieDetail: {};
+  movieCast: {};
+  message: string;
 }

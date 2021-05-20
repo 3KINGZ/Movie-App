@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
-import { posterUrl } from "../../constants";
+import { posterURL } from "../../constants";
 import { FONTS } from "../../styles";
 import routes from "../../navigation/routes";
 import { mapGenres } from "../../utils";
@@ -11,21 +11,22 @@ import { scale } from "react-native-size-matters";
 
 interface IMovieRow {
   movie: IMovie;
+  genre: string;
 }
 
-export const MovieRow = ({ movie }: IMovieRow) => {
+export const MovieRow = ({ movie, genre }: IMovieRow) => {
   const navigation = useNavigation();
 
   const { id, title, poster_path, genre_ids } = movie;
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(routes.MOVIE_DETAIL, { id })}>
+      onPress={() => navigation.navigate(routes.MOVIE_DETAIL, { id, genre })}>
       <View style={styles.container}>
         <Image
           style={styles.image}
           source={{
-            uri: posterUrl + poster_path,
+            uri: posterURL + poster_path,
           }}
         />
         <Text style={styles.title} numberOfLines={1}>

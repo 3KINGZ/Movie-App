@@ -28,6 +28,11 @@ export const FONTS = {
     fontSize: scale(18),
     color: COLORS.textColor,
   },
+  semiRegular: {
+    fontFamily: "Montserrat-SemiBold",
+    fontSize: scale(18),
+    color: COLORS.textColor,
+  },
   large: {
     fontFamily: "Montserrat-Bold",
     fontSize: scale(20),
@@ -35,6 +40,11 @@ export const FONTS = {
   },
   xlarge: {
     fontFamily: "Montserrat-Bold",
+    fontSize: scale(24),
+    color: COLORS.textColor,
+  },
+  semiXlarge: {
+    fontFamily: "Montserrat-SemiBold",
     fontSize: scale(24),
     color: COLORS.textColor,
   },

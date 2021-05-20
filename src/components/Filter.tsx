@@ -64,13 +64,15 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   filterCardContainer: {
-    padding: 10,
+    paddingVertical: scale(10),
+    paddingHorizontal: scale(15),
     borderRadius: 20,
     backgroundColor: COLORS.darkBlue,
     margin: 5,
   },
   filterCardContainerActive: {
-    padding: scale(10),
+    paddingVertical: scale(10),
+    paddingHorizontal: scale(15),
     borderRadius: 20,
     backgroundColor: COLORS.secondary,
     margin: 5,

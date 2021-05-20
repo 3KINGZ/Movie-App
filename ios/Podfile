@@ -12,6 +12,8 @@ target 'Movie_App' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'Movie_AppTests' do
     inherit! :complete
     # Pods for testing

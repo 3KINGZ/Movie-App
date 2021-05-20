@@ -1,4 +1,4 @@
-import { genres } from "../constants";
+import { genres, posterURL } from "../constants";
 
 export const generateTypes = (
   type: string,
@@ -10,9 +10,16 @@ export const generateTypes = (
   };
 };
 
-export const mapGenres = (movieGenres: [string] | undefined) => {
+export const mapGenres = (movieGenres = []) => {
   const genreStrings = movieGenres.map(genre => genres["_" + genre]);
-  return genreStrings.join(" ");
+  return genreStrings.join(", ");
+};
+
+export const mapGenresDetail = (
+  movieGenres: [{ id: number; name: string }],
+) => {
+  const genreStrings = movieGenres.map(genre => genres["_" + genre.id]);
+  return genreStrings.join(", ");
 };
 
 export const parseRating = (rating: number) => {
@@ -31,4 +38,37 @@ export const parseRating = (rating: number) => {
   } else {
     return 1;
   }
+};
+
+export const parseAuthorImage = (image: string) => {
+  if (!image) return;
+  if (!image.includes("https")) {
+    return posterURL + image;
+  } else {
+    return image.slice(1);
+  }
+};
+
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+export const formatDate = (dateString: string) => {
+  let date = new Date(dateString);
+  let month = date.getMonth();
+  let year = date.getFullYear();
+  let datee = date.getDate();
+
+  return `${datee} ${monthNames[month]} ${year}`;
 };

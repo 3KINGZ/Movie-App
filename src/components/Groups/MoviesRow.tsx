@@ -22,36 +22,32 @@ interface IMoviesRow {
 export const MoviesRow = ({ headerTitle, data, loading }: IMoviesRow) => {
   const navigation = useNavigation();
 
-  return (
-    <View style={styles.container}>
-      {loading && !data?.length ? (
-        <View
-          style={{
-            height: 170,
-            width: "100%",
-            alignItems: "center",
-            justifyContent: "center",
-          }}>
-          <ActivityIndicator size="large" color={COLORS.secondary} />
-        </View>
-      ) : (
-        <View>
-          <View style={styles.headerContainer}>
-            <Text style={styles.headerTitle}>{headerTitle}</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate(routes.MOVIE_LIST)}>
-              <Text style={styles.headerLink}>See all</Text>
-            </TouchableOpacity>
-          </View>
+  return loading && !data ? (
+    <View
+      style={{
+        height: 170,
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
+      <ActivityIndicator size="large" color="red" />
+    </View>
+  ) : (
+    <View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerTitle}>{headerTitle}</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(routes.MOVIE_LIST)}>
+          <Text style={styles.headerLink}>See all</Text>
+        </TouchableOpacity>
+      </View>
 
-          <FlatList
-            horizontal
-            data={data}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => <MovieRow movie={item} />}
-          />
-        </View>
-      )}
+      <FlatList
+        horizontal
+        data={data}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => <MovieRow movie={item} />}
+      />
     </View>
   );
 };
