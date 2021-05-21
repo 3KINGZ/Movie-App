@@ -22,9 +22,9 @@ const AppDrawerNavigator = () => {
         inactiveTintColor: COLORS.textColor,
         labelStyle: { ...FONTS.semiRegular },
       }}>
-      <Drawer.Screen name={routes.HOME} component={HomeStackNavigator} />
+      <Drawer.Screen name={routes.HOME_STACK} component={HomeStackNavigator} />
       <Drawer.Screen
-        name={routes.FAVOURITES}
+        name={routes.FAVOURITES_STACK}
         component={FavouritesStackNavigator}
       />
     </Drawer.Navigator>

@@ -47,7 +47,7 @@ export const Filter = ({ action, filterString, filterData }: IFilter) => {
       <FlatList
         horizontal
         data={filterData}
-        keyExtractor={item => item[0]}
+        keyExtractor={item => item.id}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
       />
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   FilterCardText: {
-    ...FONTS.mini,
+    ...FONTS.regular,
+    fontSize: scale(15),
   },
 });

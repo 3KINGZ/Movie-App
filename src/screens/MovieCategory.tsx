@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import { HeaderBackButton } from "@react-navigation/stack";
 
 import { Loading, Movies, Filter } from "../components";
 import { category } from "../constants";
-import { COLORS } from "../styles";
+import { COLORS, FONTS } from "../styles";
 import { _getMovieCategory } from "../actions";
+import routes from "../navigation/routes";
 
-export const MovieCategory = () => {
+export const MovieCategory = ({ navigation }: any) => {
   const [filter, setFilter] = useState({
     id: "1",
     title: "now_playing",
@@ -15,15 +23,26 @@ export const MovieCategory = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(_getMovieCategory(filter.title));
-  }, [filter]);
-
   const { genres, loading } = useSelector(state => state.movies);
+
+  useEffect(() => {
+    if (!genres?.[filter.title]) {
+      dispatch(_getMovieCategory(filter.title));
+    }
+  }, [filter]);
 
   return (
     <View style={styles.container}>
-      <Text>Movie Category</Text>
+      <TouchableOpacity onPress={() => navigation.navigate(routes.HOME)}>
+        <View style={styles.headerContainer}>
+          <View>
+            <HeaderBackButton tintColor="white" />
+          </View>
+
+          <Text style={styles.headerText}>Category</Text>
+        </View>
+      </TouchableOpacity>
+
       <Filter
         filterData={category}
         filterString={filter.title}
@@ -39,5 +58,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.primary,
     paddingHorizontal: 10,
+  },
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  headerText: {
+    ...FONTS.large,
   },
 });
