@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -11,7 +10,7 @@ import {
 import AIcon from "react-native-vector-icons/AntDesign";
 import { useSelector, useDispatch } from "react-redux";
 
-import { Movies } from "../components";
+import { Error, Movies } from "../components";
 import { COLORS, FONTS } from "../styles";
 import { searchMovie } from "../actions";
 import { scale } from "react-native-size-matters";
@@ -48,17 +47,7 @@ export const SearchScreen = ({ navigation }: { navigation: any }) => {
           />
         </View>
       </View>
-      {loading ? (
-        <ActivityIndicator
-          size={50}
-          style={{ alignSelf: "center" }}
-          color="red"
-        />
-      ) : message ? (
-        <Text>{message}</Text>
-      ) : (
-        <Movies data={searchResults} />
-      )}
+      <Movies data={searchResults} loading={loading} message={message} />
     </View>
   );
 };

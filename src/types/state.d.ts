@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 interface State {
-  movies: { genres: any; loading: boolean };
+  movies: { genres: any; loading: boolean; message: null | string };
   movieDetail: {
     movieDetail: any;
     movieCast: any;

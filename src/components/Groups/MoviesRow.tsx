@@ -5,33 +5,35 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  ActivityIndicator,
 } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 
 import routes from "../../navigation/routes";
 import { COLORS, FONTS } from "../../styles";
 import { MovieRow } from "../Cards";
-
+import { Loading } from "../Loading";
+import { Error } from "../Error";
 interface IMoviesRow {
   headerTitle: string;
   data: any;
   loading: boolean;
+  message?: null | string;
+  retryAction?: any;
 }
 
-export const MoviesRow = ({ headerTitle, data, loading }: IMoviesRow) => {
+export const MoviesRow = ({
+  headerTitle,
+  data,
+  loading,
+  message,
+  retryAction = null,
+}: IMoviesRow) => {
   const navigation = useNavigation();
 
   return loading && !data ? (
-    <View
-      style={{
-        height: 170,
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}>
-      <ActivityIndicator size="large" color="red" />
-    </View>
+    <Loading />
+  ) : message ? (
+    <Error action={retryAction} />
   ) : (
     <View>
       <View style={styles.headerContainer}>

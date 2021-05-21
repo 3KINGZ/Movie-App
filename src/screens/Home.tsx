@@ -16,7 +16,9 @@ interface IFilter {
 export const Home = () => {
   const dispatch = useDispatch();
 
-  const { genres, loading } = useSelector((state: State) => state.movies);
+  const { genres, loading, message } = useSelector(
+    (state: State) => state.movies,
+  );
 
   const [filter, setFilter] = useState<IFilter>({
     id: "28",
@@ -24,12 +26,22 @@ export const Home = () => {
   });
 
   useEffect(() => {
-    dispatch(_getMovieCategory("now_playing"));
+    getMC();
   }, []);
 
   useEffect(() => {
-    dispatch(_getMovieGenre(filter.title, filter.id));
+    getMG();
   }, [filter]);
+
+  const getMC = () => {
+    dispatch(_getMovieCategory("now_playing"));
+  };
+
+  const getMG = () => {
+    dispatch(_getMovieGenre(filter.title, filter.id));
+  };
+
+  console.log(message);
 
   return (
     <View style={styles.container}>
@@ -39,6 +51,8 @@ export const Home = () => {
           headerTitle="Now Playing"
           data={genres?.["now_playing"]}
           loading={loading}
+          message={message}
+          retryAction={getMC}
         />
 
         <View style={styles.genresContainer}>
@@ -48,7 +62,12 @@ export const Home = () => {
             filterString={filter.title}
             filterData={genreArr}
           />
-          <Movies data={genres[filter.title]} loading={loading} />
+          <Movies
+            data={genres[filter.title]}
+            loading={loading}
+            message={message}
+            retryAction={getMG}
+          />
         </View>
       </View>
     </View>

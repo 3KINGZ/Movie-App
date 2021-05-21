@@ -1,19 +1,28 @@
 import React from "react";
-import { View, FlatList, ActivityIndicator, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { scale } from "react-native-size-matters";
 
 import { Movie } from "../Cards/Movie";
+import { Error } from "../Error";
+import { Loading } from "../Loading";
 
 interface IMovies {
   data: any;
   loading?: boolean;
+  message?: any;
+  retryAction?: any;
 }
 
-export const Movies = ({ data, loading }: IMovies) => {
+export const Movies = ({
+  data,
+  loading,
+  message,
+  retryAction = null,
+}: IMovies) => {
   return loading && !data ? (
-    <View style={styles.loadingContainer}>
-      <ActivityIndicator size="large" color="red" />
-    </View>
+    <Loading />
+  ) : message ? (
+    <Error action={retryAction} />
   ) : (
     <FlatList
       style={styles.list}

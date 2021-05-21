@@ -17,7 +17,7 @@ import { _getMovieDetail } from "../actions";
 import { COLORS, FONTS } from "../styles";
 import { parseRating, mapGenresDetail } from "../utils";
 import { scale } from "react-native-size-matters";
-import { Casts, Reviews } from "../components";
+import { Casts, Reviews, Error } from "../components";
 
 const Divider = () => <View style={styles.divider} />;
 
@@ -60,7 +60,7 @@ export const MovieDetail = ({ route, navigation }: any) => {
       <ActivityIndicator color="red" size="large" />
     </View>
   ) : message ? (
-    <Text>{message}</Text>
+    <Error />
   ) : (
     <View style={styles.container}>
       <View>

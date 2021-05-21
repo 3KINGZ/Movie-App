@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderBackButton } from "@react-navigation/stack";
 
-import { Loading, Movies, Filter } from "../components";
+import { Movies, Filter } from "../components";
 import { category } from "../constants";
 import { COLORS, FONTS } from "../styles";
 import { _getMovieCategory } from "../actions";
@@ -23,13 +17,19 @@ export const MovieCategory = ({ navigation }: any) => {
 
   const dispatch = useDispatch();
 
-  const { genres, loading } = useSelector(state => state.movies);
+  const { genres, loading, message } = useSelector(
+    (state: State) => state.movies,
+  );
 
   useEffect(() => {
     if (!genres?.[filter.title]) {
-      dispatch(_getMovieCategory(filter.title));
+      getMC();
     }
   }, [filter]);
+
+  const getMC = () => {
+    dispatch(_getMovieCategory(filter.title));
+  };
 
   return (
     <View style={styles.container}>
@@ -48,7 +48,12 @@ export const MovieCategory = ({ navigation }: any) => {
         filterString={filter.title}
         action={setFilter}
       />
-      {loading ? <Loading /> : <Movies data={genres?.[filter.title]} />}
+      <Movies
+        loading={loading}
+        data={genres?.[filter.title]}
+        message={message}
+        retryAction={getMC}
+      />
     </View>
   );
 };
