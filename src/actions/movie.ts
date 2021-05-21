@@ -6,7 +6,7 @@ export const _getMovieCategory = (genre: string) => async (dispatch: any) => {
 
   const response: any = await getMoviesByCategory(genre);
 
-  if (response.data) {
+  if (response?.data) {
     dispatch({
       type: types.GET_MOVIES.SUCCESS,
       payload: { genre, data: response.data?.results },
@@ -23,7 +23,7 @@ export const _getMovieGenre =
 
     const response: any = await getMoviesByGenre(genreId);
 
-    if (response.data) {
+    if (response?.data) {
       dispatch({
         type: types.GET_MOVIES.SUCCESS,
         payload: { genre, data: response.data?.results },

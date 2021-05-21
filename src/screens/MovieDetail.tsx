@@ -64,15 +64,6 @@ export const MovieDetail = ({ route, navigation }: any) => {
   ) : (
     <View style={styles.container}>
       <View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => navigation.pop()}>
-            <Icon name="arrowleft" size={24} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon name="heart" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
-
         <View style={{ elevation: 0 }}>
           <YoutubePlayer
             height={200}
@@ -80,6 +71,14 @@ export const MovieDetail = ({ route, navigation }: any) => {
             videoId={videos?.results[0]?.key}
             webViewStyle={{ zIndex: 1 }}
           />
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <Icon name="arrowleft" size={24} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Icon name="heart" size={24} color="white" />
+          </TouchableOpacity>
         </View>
       </View>
 

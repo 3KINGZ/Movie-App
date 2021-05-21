@@ -5,7 +5,7 @@ import { scale } from "react-native-size-matters";
 import { Movie } from "../Cards/Movie";
 
 interface IMovies {
-  data: IMovies[];
+  data: any;
   loading?: boolean;
 }
 

@@ -8,13 +8,13 @@ export const _getMovieDetail = (id: string) => async (dispatch: any) => {
   const movieCast = await getMovieCast(id);
   const movieReviews = await getReviews(id);
 
-  if (movieDetail.data && movieCast.data && movieReviews.data) {
+  if (movieDetail?.data && movieCast?.data && movieReviews?.data) {
     const { data: detail } = movieDetail;
     const { data: reviews } = movieReviews;
 
     dispatch({
       type: types.GET_MOVIE_DETAIL.SUCCESS,
-      payload: { detail, cast: data?.cast, reviews: reviews?.results },
+      payload: { detail, cast: detail?.cast, reviews: reviews?.results },
     });
 
     return;

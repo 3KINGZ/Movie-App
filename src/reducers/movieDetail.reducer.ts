@@ -1,11 +1,11 @@
 import * as types from "../actions/types";
 
 const initialState = {
-  loading: false,
   movieDetail: {},
   movieCast: [],
-  message: null,
   reviews: [],
+  loading: false,
+  message: null,
 };
 
 const movieDetailReducer = (

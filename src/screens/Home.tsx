@@ -5,11 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { _getMovieCategory, _getMovieGenre } from "../actions/movie";
 import { MoviesRow, Filter, Movies, Header } from "../components";
+import { genreArr } from "../constants";
 import { COLORS, FONTS } from "../styles";
 
 interface IFilter {
-  genreId: string;
-  genre: string;
+  id: string;
+  title: string;
 }
 
 export const Home = () => {
@@ -18,8 +19,8 @@ export const Home = () => {
   const { genres, loading } = useSelector((state: State) => state.movies);
 
   const [filter, setFilter] = useState<IFilter>({
-    genreId: "28",
-    genre: "Action",
+    id: "28",
+    title: "Action",
   });
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(_getMovieGenre(filter.genre, filter.genreId));
+    dispatch(_getMovieGenre(filter.title, filter.id));
   }, [filter]);
 
   return (
@@ -42,8 +43,12 @@ export const Home = () => {
 
         <View style={styles.genresContainer}>
           <Text style={styles.genreTitle}>Genres</Text>
-          <Filter action={setFilter} filterString={filter.genre} />
-          <Movies data={genres[filter.genre]} loading={loading} />
+          <Filter
+            action={setFilter}
+            filterString={filter.title}
+            filterData={genreArr}
+          />
+          <Movies data={genres[filter.title]} loading={loading} />
         </View>
       </View>
     </View>

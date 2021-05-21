@@ -37,7 +37,7 @@ export const MoviesRow = ({ headerTitle, data, loading }: IMoviesRow) => {
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}>{headerTitle}</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate(routes.MOVIE_LIST)}>
+          onPress={() => navigation.navigate(routes.MOVIE_CATEGORY)}>
           <Text style={styles.headerLink}>See all</Text>
         </TouchableOpacity>
       </View>
@@ -47,6 +47,7 @@ export const MoviesRow = ({ headerTitle, data, loading }: IMoviesRow) => {
         data={data}
         keyExtractor={item => item.id}
         renderItem={({ item }) => <MovieRow movie={item} />}
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );

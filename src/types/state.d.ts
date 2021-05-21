@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 interface State {
   movies: { genres: any; loading: boolean };
@@ -11,5 +12,10 @@ interface State {
   bookmarks: {
     bookmarks: [];
     bookmarksMap: any;
+  };
+  search: {
+    searchResults: any;
+    loading: boolean;
+    message: string | null;
   };
 }

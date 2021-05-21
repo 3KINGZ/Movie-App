@@ -1,8 +1,10 @@
 const routes = Object.freeze({
   HOME: "Home",
-  MOVIE_LIST: "Movie List",
-  MOVIE_DETAIL: "MOVIE_DETAIL",
+  Favourites: "Favourites",
+  MOVIE_CATEGORY: "Movie Category",
+  MOVIE_DETAIL: "Movie Detail",
   FAVOURITES: "Favourites",
+  SEARCH: "SEARCH",
 });
 
 export default routes;

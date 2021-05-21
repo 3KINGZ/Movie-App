@@ -13,7 +13,7 @@ import routes from "../../navigation/routes";
 import { mapGenres, parseRating } from "../../utils";
 import { addToBookmark, deleteFromBookmark } from "../../actions";
 
-export const Movie = ({ movie, genre }: { movie: IMovie; genre: string }) => {
+export const Movie = ({ movie }: { movie: any }) => {
   const navigation = useNavigation();
 
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export const Movie = ({ movie, genre }: { movie: IMovie; genre: string }) => {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(routes.MOVIE_DETAIL, { id, genre })}>
+      onPress={() => navigation.navigate(routes.MOVIE_DETAIL, { id })}>
       <View style={styles.container}>
         <Image source={{ uri: posterURL + poster_path }} style={styles.image} />
 
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
   image: {
     width: scale(130),
     height: scale(150),
+    resizeMode: "cover",
   },
   infoContainer: {
     width: "60%",

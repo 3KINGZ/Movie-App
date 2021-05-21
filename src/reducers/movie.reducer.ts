@@ -3,7 +3,7 @@ import * as types from "../actions/types";
 const initialState = {
   genres: {},
   loading: false,
-  message: "",
+  message: null,
 };
 
 const movieReducer = (
@@ -18,7 +18,7 @@ const movieReducer = (
 
     case types.GET_MOVIES.SUCCESS: {
       const genres = { ...state.genres, [payload.genre]: payload.data };
-      return { loading: false, genres };
+      return { loading: false, genres, message: null };
     }
 
     case types.GET_MOVIES.FAILURE:

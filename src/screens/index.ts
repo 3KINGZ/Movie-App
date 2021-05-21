@@ -1,4 +1,5 @@
 export * from "./Home";
-export * from "./MovieList";
+export * from "./MovieCategory";
 export * from "./MovieDetail";
 export * from "./Favourites";
+export * from "./SearchScreen";

@@ -10,8 +10,13 @@ export const Favourites = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Favourites</Text>
-      <Movies data={bookmarks} />
+      {!bookmarks.length ? (
+        <Text style={styles.message}>
+          ...Oops You haven't added any movie to favourite list yet
+        </Text>
+      ) : (
+        <Movies data={bookmarks} />
+      )}
     </View>
   );
 };
@@ -24,5 +29,9 @@ const styles = StyleSheet.create({
   },
   headerText: {
     ...FONTS.large,
+  },
+  message: {
+    ...FONTS.large,
+    textAlign: "center",
   },
 });
