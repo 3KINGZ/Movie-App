@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 import { _getMovieCategory, _getMovieGenre } from "../actions/movie";
-import { MoviesRow, Filter, Movies } from "../components";
+import { MoviesRow, Filter, Movies, Header } from "../components";
 import { COLORS, FONTS } from "../styles";
 
 interface IFilter {
@@ -30,10 +30,9 @@ export const Home = () => {
     dispatch(_getMovieGenre(filter.genre, filter.genreId));
   }, [filter]);
 
-  console.log(genres?.["now_playing"]);
-
   return (
     <View style={styles.container}>
+      <Header />
       <View style={styles.contentContainer}>
         <MoviesRow
           headerTitle="Now Playing"

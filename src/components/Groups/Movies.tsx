@@ -6,7 +6,7 @@ import { Movie } from "../Cards/Movie";
 
 interface IMovies {
   data: IMovies[];
-  loading: boolean;
+  loading?: boolean;
 }
 
 export const Movies = ({ data, loading }: IMovies) => {

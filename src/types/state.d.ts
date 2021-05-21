@@ -8,4 +8,8 @@ interface State {
     message: string | null;
     reviews: any;
   };
+  bookmarks: {
+    bookmarks: [];
+    bookmarksMap: any;
+  };
 }
