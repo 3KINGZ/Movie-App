@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { Text, FlatList, StyleSheet } from "react-native";
 
 import { FONTS } from "../../styles";
 import { Review } from "../Cards/Review";

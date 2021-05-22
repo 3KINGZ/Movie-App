@@ -41,8 +41,6 @@ export const Home = () => {
     dispatch(_getMovieGenre(filter.title, filter.id));
   };
 
-  console.log(message);
-
   return (
     <View style={styles.container}>
       <Header />
