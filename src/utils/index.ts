@@ -10,19 +10,19 @@ export const generateTypes = (
   };
 };
 
-export const mapGenres = (movieGenres = []) => {
+export const mapGenres = (movieGenres = []): string => {
   const genreStrings = movieGenres.map(genre => genres["_" + genre]);
   return genreStrings.join(", ");
 };
 
 export const mapGenresDetail = (
   movieGenres: [{ id: number; name: string }],
-) => {
+): string => {
   const genreStrings = movieGenres.map(genre => genres["_" + genre.id]);
   return genreStrings.join(", ");
 };
 
-export const parseRating = (rating: number) => {
+export const parseRating = (rating: number): number => {
   if (rating >= 8) {
     return 4.5;
   } else if (rating >= 7) {
@@ -40,7 +40,7 @@ export const parseRating = (rating: number) => {
   }
 };
 
-export const parseAuthorImage = (image: string) => {
+export const parseAuthorImage = (image: string): string | undefined => {
   if (!image) return;
   if (!image.includes("https")) {
     return posterURL + image;
@@ -64,11 +64,11 @@ const monthNames = [
   "December",
 ];
 
-export const formatDate = (dateString: string) => {
+export const formatDate = (dateString: string): string => {
   let date = new Date(dateString);
   let month = date.getMonth();
   let year = date.getFullYear();
-  let datee = date.getDate();
+  let _date = date.getDate();
 
-  return `${datee} ${monthNames[month]} ${year}`;
+  return `${_date} ${monthNames[month]} ${year}`;
 };
