@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import axios from "axios";
 
 import { baseURL, searchURL, apiKey, other, genreURL } from "../constants";
@@ -11,7 +12,12 @@ const getURLs: { [key: string]: any } = {
 
 const resolveGenreURL = (genre: string) => `${genreURL}&with_genres=${genre}`;
 
-export const searchMovies = async (keyword: string) => {
+interface iService {
+  data: null | [] | {};
+  error: null | string | {};
+}
+
+export const searchMovies = async (keyword: string): Promise<iService> => {
   try {
     let response = await axios.get(
       `${searchURL}?api_key=${apiKey}${other}&query=${keyword}&include_adult=false`,
@@ -23,7 +29,7 @@ export const searchMovies = async (keyword: string) => {
   }
 };
 
-export const getMoviesByCategory = async (type: string) => {
+export const getMoviesByCategory = async (type: string): Promise<iService> => {
   try {
     let response = await axios.get(getURLs[type]);
     response = await response.data;
@@ -33,7 +39,7 @@ export const getMoviesByCategory = async (type: string) => {
   }
 };
 
-export const getMoviesByGenre = async (genre: string) => {
+export const getMoviesByGenre = async (genre: string): Promise<iService> => {
   try {
     let response = await axios.get(resolveGenreURL(genre));
     response = await response.data;
@@ -43,7 +49,7 @@ export const getMoviesByGenre = async (genre: string) => {
   }
 };
 
-export const getMovieDetail = async (id: string) => {
+export const getMovieDetail = async (id: string): Promise<iService> => {
   try {
     let response = await axios.get(
       `${baseURL}${id}?api_key=${apiKey}&append_to_response=videos`,
@@ -55,7 +61,7 @@ export const getMovieDetail = async (id: string) => {
   }
 };
 
-export const getMovieCast = async (id: string) => {
+export const getMovieCast = async (id: string): Promise<iService> => {
   try {
     let response = await axios.get(`${baseURL}${id}/credits?api_key=${apiKey}`);
     response = await response?.data;
@@ -65,7 +71,7 @@ export const getMovieCast = async (id: string) => {
   }
 };
 
-export const getReviews = async (id: string) => {
+export const getReviews = async (id: string): Promise<iService> => {
   try {
     let response = await axios.get(`${baseURL}${id}/reviews?api_key=${apiKey}`);
     response = await response?.data;

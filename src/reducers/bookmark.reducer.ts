@@ -31,6 +31,19 @@ const bookmarkReducer = (
       return { bookmarksMap: map, bookmarks };
     }
 
+    case types.SYNC_BOOKMARKS:
+      return {
+        ...state,
+        bookmarks: [...state.bookmarks, ...payload],
+      };
+
+    case types.SYNC_BOOKMARKS_MAP: {
+      return {
+        ...state,
+        bookmarksMap: { ...state.bookmarksMap, ...payload },
+      };
+    }
+
     default:
       return state;
   }
