@@ -13,6 +13,7 @@ import { COLORS, FONTS } from "../../styles";
 import { MovieRow } from "../Cards";
 import { Loading } from "../Loading";
 import { Error } from "../Error";
+
 interface IMoviesRow {
   headerTitle: string;
   data: any;
