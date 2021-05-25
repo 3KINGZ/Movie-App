@@ -3,32 +3,18 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import StarRating from "react-native-star-rating";
-import Icon from "react-native-vector-icons/AntDesign";
-import { useSelector, useDispatch } from "react-redux";
 import { scale } from "react-native-size-matters";
 
 import { posterURL } from "../../constants";
 import { COLORS, FONTS } from "../../styles";
-import routes from "../../navigation/routes";
 import { mapGenres, parseRating } from "../../utils";
-import { addToBookmark, deleteFromBookmark } from "../../actions";
+import { FavouriteButton } from "../FavouriteButton";
+import routes from "../../navigation/routes";
 
 export const Movie = ({ movie }: { movie: any }) => {
   const navigation = useNavigation();
 
-  const dispatch = useDispatch();
-
-  const { bookmarksMap } = useSelector((state: State) => state.bookmarks);
-
   const { id, title, poster_path, genre_ids, vote_average } = movie;
-
-  const _deleteFromBookmark = () => {
-    dispatch(deleteFromBookmark(id));
-  };
-
-  const _addToBookmark = () => {
-    dispatch(addToBookmark(movie));
-  };
 
   return (
     <TouchableOpacity
@@ -37,25 +23,9 @@ export const Movie = ({ movie }: { movie: any }) => {
         <Image source={{ uri: posterURL + poster_path }} style={styles.image} />
 
         <View style={styles.infoContainer}>
-          {bookmarksMap?.[id] ? (
-            <TouchableOpacity onPress={_deleteFromBookmark}>
-              <Icon
-                name="heart"
-                size={24}
-                color="white"
-                style={styles.deleteIcon}
-              />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity onPress={_addToBookmark}>
-              <Icon
-                name="heart"
-                size={24}
-                color="white"
-                style={styles.addIcon}
-              />
-            </TouchableOpacity>
-          )}
+          <View style={styles.favBtnContainer}>
+            <FavouriteButton movie={movie} />
+          </View>
 
           <Text style={styles.title} numberOfLines={2}>
             {title}
@@ -104,8 +74,7 @@ const styles = StyleSheet.create({
     width: "60%",
     paddingHorizontal: 10,
   },
-  addIcon: { alignSelf: "flex-end", opacity: 0.5 },
-  deleteIcon: { alignSelf: "flex-end" },
+  favBtnContainer: { alignSelf: "flex-end" },
   title: {
     ...FONTS.regular,
     fontWeight: "bold",

@@ -17,7 +17,7 @@ import { _getMovieDetail } from "../actions";
 import { COLORS, FONTS } from "../styles";
 import { parseRating, mapGenresDetail } from "../utils";
 import { scale } from "react-native-size-matters";
-import { Casts, Reviews, Error } from "../components";
+import { Casts, Reviews, Error, FavouriteButton } from "../components";
 
 const Divider = () => <View style={styles.divider} />;
 
@@ -76,9 +76,7 @@ export const MovieDetail = ({ route, navigation }: any) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <Icon name="arrowleft" size={24} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon name="heart" size={24} color="white" />
-          </TouchableOpacity>
+          <FavouriteButton movie={movieDetail} />
         </View>
       </View>
 
