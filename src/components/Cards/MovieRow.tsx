@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/core";
@@ -11,7 +10,7 @@ import { scale } from "react-native-size-matters";
 
 interface IMovieRow {
   movie: IMovie;
-  genre: string;
+  genre?: string;
 }
 
 export const MovieRow = ({ movie, genre }: IMovieRow) => {

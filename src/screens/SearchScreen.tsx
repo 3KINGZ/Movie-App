@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useState } from "react";
 import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import AIcon from "react-native-vector-icons/AntDesign";

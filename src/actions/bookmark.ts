@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import * as types from "./types";
 
 export const addToBookmark = (movie: any) => (dispatch: any) => {

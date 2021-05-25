@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import axios from "axios";
 
 import { baseURL, searchURL, apiKey, other, genreURL } from "../constants";

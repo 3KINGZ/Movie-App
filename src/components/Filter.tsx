@@ -11,9 +11,9 @@ interface IFilterCard {
 }
 
 interface IFilter {
-  action: () => any;
+  action: any;
   filterString: string;
-  filterData: [];
+  filterData: { id: string; title: string }[];
 }
 
 const FilterCard = ({ filter, active, action }: IFilterCard) => {
