@@ -16,7 +16,7 @@ const FavouritesStackNavigator = () => {
     <Stack.Navigator
       screenOptions={{ headerStyle: { backgroundColor: COLORS.primary } }}>
       <Stack.Screen
-        name={routes.FAVOURITES}
+        name={routes.FAVOURITES_SCREEN}
         options={({ navigation }) => ({
           headerLeft: props => (
             <HeaderBackButton

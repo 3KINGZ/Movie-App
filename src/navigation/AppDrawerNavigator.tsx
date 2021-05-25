@@ -24,7 +24,7 @@ const AppDrawerNavigator = () => {
       }}>
       <Drawer.Screen name={routes.HOME_STACK} component={HomeStackNavigator} />
       <Drawer.Screen
-        name={routes.FAVOURITES_STACK}
+        name={routes.FAVOURITES}
         component={FavouritesStackNavigator}
       />
     </Drawer.Navigator>
