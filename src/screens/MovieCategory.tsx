@@ -33,15 +33,16 @@ export const MovieCategory = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate(routes.HOME)}>
-        <View style={styles.headerContainer}>
-          <View>
-            <HeaderBackButton tintColor="white" />
-          </View>
-
-          <Text style={styles.headerText}>Category</Text>
+      <View style={styles.headerContainer}>
+        <View>
+          <HeaderBackButton
+            tintColor="white"
+            onPress={() => navigation.navigate(routes.HOME)}
+          />
         </View>
-      </TouchableOpacity>
+
+        <Text style={styles.headerText}>Category</Text>
+      </View>
 
       <Filter
         filterData={category}

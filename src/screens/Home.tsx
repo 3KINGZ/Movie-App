@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 import { _getMovieCategory, _getMovieGenre } from "../actions/movie";
@@ -43,30 +43,32 @@ export const Home = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.contentContainer}>
-        <MoviesRow
-          headerTitle="Now Playing"
-          data={genres?.["now_playing"]}
-          loading={loading}
-          message={message}
-          retryAction={getMC}
-        />
-
-        <View style={styles.genresContainer}>
-          <Text style={styles.genreTitle}>Genres</Text>
-          <Filter
-            action={setFilter}
-            filterString={filter.title}
-            filterData={genreArr}
-          />
-          <Movies
-            data={genres[filter.title]}
+      <ScrollView>
+        <View style={styles.contentContainer}>
+          <MoviesRow
+            headerTitle="Now Playing"
+            data={genres?.["now_playing"]}
             loading={loading}
             message={message}
-            retryAction={getMG}
+            retryAction={getMC}
           />
+
+          <View style={styles.genresContainer}>
+            <Text style={styles.genreTitle}>Genres</Text>
+            <Filter
+              action={setFilter}
+              filterString={filter.title}
+              filterData={genreArr}
+            />
+            <Movies
+              data={genres[filter.title]}
+              loading={loading}
+              message={message}
+              retryAction={getMG}
+            />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
