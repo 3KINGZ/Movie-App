@@ -23,7 +23,9 @@ export const mapGenresDetail = (
 };
 
 export const parseRating = (rating: number): number => {
-  if (rating >= 8) {
+  if (rating >= 9) {
+    return 5;
+  } else if (rating >= 8) {
     return 4.5;
   } else if (rating >= 7) {
     return 4;
