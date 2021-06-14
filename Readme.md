@@ -6,7 +6,7 @@
 
 <!-- ![](https://github.com/3KINGZ/Movie-App/blob/master/screenshots/screenshot-mv-2.png?raw=true) -->
 
-<img src="screenshots/screenshot-mv-2.png" width="100">
+<img src="screenshots/screenshot-mv-2.png" width="250">
 
 ![](https://github.com/3KINGZ/Movie-App/blob/master/screenshots/screenshot-mv-3.png?raw=true)
 
