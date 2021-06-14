@@ -10,7 +10,7 @@ import { mapGenres, parseRating } from "../../utils";
 import { FavouriteButton } from "../FavouriteButton";
 import routes from "../../navigation/routes";
 
-export const Movie = ({ movie }: { movie: any }) => {
+export const Movie = ({ movie }: { movie: IMovie }) => {
   const navigation = useNavigation();
 
   const { id, title, poster_path, genre_ids, vote_average } = movie;

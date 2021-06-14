@@ -12,7 +12,10 @@ export const generateTypes = (
   };
 };
 
-export const mapGenres = (movieGenres: []): string => {
+export const mapGenres = (movieGenres: []): string | undefined => {
+  if (!movieGenres) {
+    return;
+  }
   const genreStrings = movieGenres.map(genre => genres["_" + genre]);
   return genreStrings.join(", ");
 };

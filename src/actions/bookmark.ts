@@ -8,6 +8,6 @@ export const deleteFromBookmark = (id: string) => (dispatch: any) => {
   dispatch({ type: types.DELETE_FROM_BOOKMARK, payload: id });
 };
 
-export const syncBookmarks = (bookmarks: any) => (dispatch: any) => {
+export const syncBookmarks = (bookmarks: IMovie) => (dispatch: any) => {
   dispatch({ type: types.SYNC_BOOKMARKS, payload: bookmarks });
 };

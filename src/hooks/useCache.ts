@@ -12,11 +12,10 @@ export const useCache = () => {
   useEffect(() => {
     getData("bookmarks")
       .then(resp => {
-        console.log("bookmarks", resp);
         dispatch(syncBookmarks(resp));
       })
       .catch(() => {
-        console.log("error");
+        return;
       });
   }, []);
 

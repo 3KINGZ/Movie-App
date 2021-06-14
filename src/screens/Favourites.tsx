@@ -5,11 +5,7 @@ import { Movies } from "../components";
 import { COLORS, FONTS } from "../styles";
 
 export const Favourites = () => {
-  const { bookmarks, bookmarksMap } = useSelector(
-    (state: State) => state.bookmarks,
-  );
-
-  console.log("comp", bookmarksMap);
+  const { bookmarks } = useSelector((state: State) => state.bookmarks);
 
   return (
     <View style={styles.container}>
