@@ -4,7 +4,7 @@
 
 ![](https://github.com/3KINGZ/Movie-App/blob/master/screenshots/Screenshot_mv-1.png?raw=true)
 
-![](https://github.com/3KINGZ/Movie-App/blob/master/screenshots/Screenshot-mv-2.png?raw=true)
+![](https://github.com/3KINGZ/Movie-App/blob/master/screenshots/screenshot-mv-2.png?raw=true)
 
 ![](https://github.com/3KINGZ/Movie-App/blob/master/screenshots/screenshot-mv-3.png?raw=true)
 
