@@ -10,7 +10,7 @@ interface IFavouriteButton {
 }
 
 export const FavouriteButton = ({ movie }: IFavouriteButton) => {
-  const { bookmarksMap } = useSelector((state: State) => state.bookmarks);
+  const { bookmarks } = useSelector((state: State) => state.bookmarks);
   const dispatch = useDispatch();
 
   const _deleteFromBookmark = () => {
@@ -23,13 +23,13 @@ export const FavouriteButton = ({ movie }: IFavouriteButton) => {
 
   return (
     <>
-      {bookmarksMap?.[movie.id] ? (
-        <TouchableOpacity onPress={_deleteFromBookmark}>
-          <Icon name="heart" size={24} color="white" />
-        </TouchableOpacity>
-      ) : (
+      {!bookmarks.find((bookmark: IMovie) => bookmark.id === movie.id) ? (
         <TouchableOpacity onPress={_addToBookmark}>
           <Icon name="heart" size={24} color="white" style={styles.addIcon} />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={_deleteFromBookmark}>
+          <Icon name="heart" size={24} color="white" />
         </TouchableOpacity>
       )}
     </>

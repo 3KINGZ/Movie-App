@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { syncBookmarks, syncBookmarksMap } from "../actions";
-import { storeData, getData } from "../utils/cache";
+import { syncBookmarks } from "../actions";
+import { storeData, getData } from "../utils";
 
 export const useCache = () => {
   const dispatch = useDispatch();
 
-  const { bookmarks, bookmarksMap } = useSelector(
-    (state: State) => state.bookmarks,
-  );
+  const { bookmarks } = useSelector((state: State) => state.bookmarks);
 
   useEffect(() => {
     getData("bookmarks")
@@ -23,18 +21,6 @@ export const useCache = () => {
   }, []);
 
   useEffect(() => {
-    getData("bookmarksMap")
-      .then(resp => {
-        console.log("bookmarksMap", resp);
-        dispatch(syncBookmarksMap(resp));
-      })
-      .catch(() => {
-        console.log("error");
-      });
-  }, []);
-
-  useEffect(() => {
     storeData("bookmarks", bookmarks);
-    storeData("bookmarksMap", bookmarksMap);
-  }, [bookmarks, bookmarksMap]);
+  }, [bookmarks]);
 };

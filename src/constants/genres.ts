@@ -59,6 +59,10 @@ export const genreArr = [
   },
   {
     id: "36",
+    title: "History",
+  },
+  {
+    id: "27",
     title: "Horror",
   },
   {

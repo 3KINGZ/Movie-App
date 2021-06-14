@@ -2,7 +2,6 @@ import * as types from "../actions/types";
 
 const initialState = {
   bookmarks: [],
-  bookmarksMap: {},
 };
 
 const bookmarkReducer = (
@@ -14,7 +13,6 @@ const bookmarkReducer = (
   switch (type) {
     case types.ADD_TO_BOOKMARK: {
       return {
-        bookmarksMap: { ...state.bookmarksMap, [payload.id]: true },
         bookmarks: [...state.bookmarks, payload],
       };
     }
@@ -24,25 +22,13 @@ const bookmarkReducer = (
         (bookmark: any) => bookmark.id !== payload,
       );
 
-      const map: { [key: string]: any } = state.bookmarksMap;
-
-      delete map[payload];
-
-      return { bookmarksMap: map, bookmarks };
+      return { bookmarks };
     }
 
     case types.SYNC_BOOKMARKS:
       return {
-        ...state,
-        bookmarks: [...state.bookmarks, ...payload],
+        bookmarks: [...payload],
       };
-
-    case types.SYNC_BOOKMARKS_MAP: {
-      return {
-        ...state,
-        bookmarksMap: { ...state.bookmarksMap, ...payload },
-      };
-    }
 
     default:
       return state;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
-import { _getMovieCategory, _getMovieGenre } from "../actions/movie";
+import { _getMovieCategory, _getMovieGenre } from "../actions";
 import { MoviesRow, Filter, Movies, Header } from "../components";
 import { genreArr } from "../constants";
 import { COLORS, FONTS } from "../styles";

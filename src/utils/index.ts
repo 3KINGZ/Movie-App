@@ -1,5 +1,7 @@
 import { genres, posterURL } from "../constants";
 
+export * from "./cache";
+
 export const generateTypes = (
   type: string,
 ): { REQUEST: string; SUCCESS: string; FAILURE: string } => {
@@ -10,7 +12,7 @@ export const generateTypes = (
   };
 };
 
-export const mapGenres = (movieGenres = []): string => {
+export const mapGenres = (movieGenres: []): string => {
   const genreStrings = movieGenres.map(genre => genres["_" + genre]);
   return genreStrings.join(", ");
 };
