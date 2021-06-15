@@ -37,6 +37,7 @@ export const SearchScreen = ({ navigation }: { navigation: any }) => {
             style={styles.input}
             onChangeText={text => setSearchString(text)}
             onSubmitEditing={_searchMovies}
+            autoFocus={true}
           />
         </View>
       </View>
